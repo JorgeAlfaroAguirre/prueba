@@ -28,11 +28,31 @@ document.addEventListener("DOMContentLoaded", function () {
   
           const matriculaCell = document.createElement('td');
           matriculaCell.textContent = odontologo.matricula;
+
+          const updateCell = document.createElement('td');
+          const updateButton = document.createElement('button');
+          updateButton.textContent = 'Actualizar';
+          updateButton.addEventListener('click', function () {
+            alert(`ID del odontólogo a actualizar: ${odontologo.id}`);
+          });
+
+          const deleteCell = document.createElement('td');
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Eliminar';
+          deleteButton.addEventListener('click', function () {
+            alert(`ID del odontólogo a borrar ${odontologo.id}`);
+          });
+
+          updateCell.appendChild(updateButton);
+          deleteCell.appendChild(deleteButton);
   
           newRow.appendChild(idCell);
           newRow.appendChild(nombreCell);
           newRow.appendChild(apellidoCell);
           newRow.appendChild(matriculaCell);
+          newRow.appendChild(updateCell);
+          newRow.appendChild(deleteCell);
+  
   
           tbody.appendChild(newRow);
         }
