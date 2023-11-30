@@ -39,6 +39,9 @@
         <li class="nav-item">
           <a class="nav-link" href="pacientes.html">Pacientes</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/turnos.html">Turnos</a>
+        </li>
         <li class="nav-item dropdown">
           <a
                   class="nav-link dropdown-toggle"
@@ -56,43 +59,43 @@
               >
             </li>
             <li>
-              <a class="dropdown-item" href="agregar_paciente.html"
-              >Agregar Pacientes</a
-              >
+              <a class="dropdown-item" href="/agregar_paciente.html">
+                Agregar Pacientes
+            </a>
             </li>
             <li>
-              <a class="dropdown-item" href="turnos.html">Listar turnos</a>
+              <a class="dropdown-item" href="/agregar_turnos.html">
+                Agregar Turnos
+            </a>
             </li>
-          </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<h1 class="text-center">Agregar Turno:</h1>
+<h1 class="text-center">Listar Turnos</h1>
 
 <section class="container">
-  <form action="#">
-    <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="floatingInput" />
-      <label for="floatingInput">ID Paciente:</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="se" />
-      <label for="se">ID Odontologo:</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="date" class="form-control" id="s" />
-      <label for="s">Fecha:</label>
-    </div>
-    <div class="text-center">
-      <button class="btn btn-primary fs-5 fw-bold" type="submit">
-        Enviar
-      </button>
-    </div>
-  </form>
-</section>
 
+  <table class="table border border-black">
+    <thead>
+    <tr>
+      <th scope="col">ID </th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Actualizar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tr>
+    </tbody>
+  </table>
+
+  <p id="Listar_odontologos"></p>
+
+</section>
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

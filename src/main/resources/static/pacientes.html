@@ -39,6 +39,9 @@
         <li class="nav-item">
           <a class="nav-link" href="pacientes.html">Pacientes</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/turnos.html">Turnos</a>
+      </li>
         <li class="nav-item dropdown">
           <a
                   class="nav-link dropdown-toggle"
@@ -56,12 +59,14 @@
               >
             </li>
             <li>
-              <a class="dropdown-item" href="agregar_paciente.html"
-              >Agregar Pacientes</a
-              >
+              <a class="dropdown-item" href="/agregar_paciente.html">
+                Agregar Pacientes
+            </a>
             </li>
             <li>
-              <a class="dropdown-item" href="turnos.html">Listar turnos</a>
+              <a class="dropdown-item" href="/agregar_turnos.html">
+                Agregar Turnos
+            </a>
             </li>
           </ul>
         </li>
@@ -69,7 +74,7 @@
     </div>
   </div>
 </nav>
-<h1 class="text-center">Lista</h1>
+<h1 class="text-center">Lista Pacientes</h1>
 
 <section class="container">
   <table class="table border border-black">
@@ -78,11 +83,15 @@
       <th scope="col">ID</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
+      <th scope="col">Cedula</th>
+      <th scope="col">Fecha de ingreso</th>
       <th scope="col">Email</th>
       <th scope="col">Calle</th>
       <th scope="col">Número</th>
       <th scope="col">Localidad</th>
       <th scope="col">Provincia</th>
+      <th scope="col">Actualizar</th>
+      <th scope="col">Eliminar</th>
     </tr>
     </thead>
     <tbody></tbody>
@@ -93,5 +102,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"
 ></script>
+<script src="./js/get_pacientes.js" type="text/javascript"></script>
+
 </body>
 </html>
