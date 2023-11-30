@@ -11,7 +11,6 @@ public class GlobalException {
     Logger logger = Logger.getLogger(GlobalException.class);
     @ExceptionHandler({ResorceNotFoundException.class})
     public ResponseEntity<String> tratamientoResorceNotFoundException(ResorceNotFoundException rnfe){
-        //mostramos el error mediante logger
         logger.error(rnfe.getMessage());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(rnfe.getMessage());

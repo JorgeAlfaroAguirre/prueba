@@ -26,15 +26,16 @@ class OdontologoServiceTest {
     @Order(1)
     public void testGuardarOdontologo(){
         logger.info("Iniciando test de Guardado");
-        Odontologo odontologo=new Odontologo(444,"Jorge", "Alfaro");
+        Odontologo odontologo = new Odontologo(444, "Jorge", "Alfaro");
         odontologoService.guardarOdontologo(odontologo);
 
         List<Odontologo> lista = odontologoService.listarOdontologos();
 
-        //Verificamos que la lista no este vacía y contenga el odontologo guardado
-        assertTrue(lista != null && lista.contains(odontologo));
-    }
+        boolean odontologoEncontrado = lista.stream()
+                .anyMatch(o -> o.getMatricula() == odontologo.getMatricula());
 
+        assertTrue(odontologoEncontrado);
+    }
     @Test
     @Order(2)
     public void testActualizarOdontolgoo(){
@@ -43,22 +44,23 @@ class OdontologoServiceTest {
         Odontologo odontologoInicial = new Odontologo(333, "Cristian", "Beloqui");
         odontologoService.guardarOdontologo(odontologoInicial);
 
-        //Actualizamos el odontologoInicial
-        Odontologo odontologoActualizado = new Odontologo(1L,555, "Cristian", "Beloqui");
+        Optional<Odontologo> odontologoGuardado = odontologoService.buscarOdontologoId(odontologoInicial.getId());
+        assertTrue(odontologoGuardado.isPresent());
+
+        Odontologo odontologoActualizado = odontologoGuardado.get();
+        odontologoActualizado.setMatricula(555);
+        odontologoActualizado.setNombre("Cristian");
+        odontologoActualizado.setApellido("Beloqui");
+
         odontologoService.actualizarOdontologo(odontologoActualizado);
 
-        //Buscamos el odontologo
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologoId(odontologoInicial.getId());
-
-        //Verificamos que este presente el odontologo buscado
         assertTrue(odontologoBuscado.isPresent());
         Odontologo odontologoEncontrado = odontologoBuscado.get();
 
-        //Comparamos propiedades
         assertEquals(odontologoActualizado.getMatricula(), odontologoEncontrado.getMatricula());
         assertEquals(odontologoActualizado.getNombre(), odontologoEncontrado.getNombre());
         assertEquals(odontologoActualizado.getApellido(), odontologoEncontrado.getApellido());
-
     }
 
     @Test
@@ -69,15 +71,13 @@ class OdontologoServiceTest {
         Odontologo odontologoInicial = new Odontologo(333, "Cristian", "Beloqui");
         odontologoService.guardarOdontologo(odontologoInicial);
 
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologoId(odontologoInicial.getId());
-        assertTrue(odontologoBuscado.isPresent());
+        Optional<Odontologo> odontologoGuardado = odontologoService.buscarOdontologoId(odontologoInicial.getId());
+        assertTrue(odontologoGuardado.isPresent());
 
-        //Eliminamos el odontologo
-        odontologoService.eliminarOdontologo(odontologoInicial.getId());
+        odontologoService.eliminarOdontologo(odontologoGuardado.get().getId());
 
-        //Verificamos que se elimino correctamente
         Optional<Odontologo> odontologoEliminado = odontologoService.buscarOdontologoId(odontologoInicial.getId());
         assertFalse(odontologoEliminado.isPresent());
-
     }
+
 }

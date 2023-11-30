@@ -10,15 +10,4 @@ public class TurnoDTO {
     private Long odontologoId;
     private LocalDate fechaTurno;
 
-    public Long getId() {
-        return id;
-    }
-
-    public Long getPacienteId() {
-        return pacienteId;
-    }
-
-    public Long getOdontologoId() {
-        return odontologoId;
-    }
 }
